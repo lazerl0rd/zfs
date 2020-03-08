@@ -115,21 +115,21 @@ AC_DEFUN([ZFS_AC_CONFIG_ALWAYS_CC_NO_BOOL_COMPARE], [
 ])
 
 dnl #
-dnl # Check if gcc supports -Wno-unused-but-set-variable option.
+dnl # Check if gcc supports -Wno-unused-const-variable option.
 dnl #
-dnl # We actually invoke gcc with the -Wunused-but-set-variable option
+dnl # We actually invoke gcc with the -Wunused-const-variable option
 dnl # and infer the 'no-' version does or doesn't exist based upon
 dnl # the results.  This is required because when checking any of
 dnl # no- prefixed options gcc always returns success.
 dnl #
 AC_DEFUN([ZFS_AC_CONFIG_ALWAYS_CC_NO_UNUSED_BUT_SET_VARIABLE], [
-	AC_MSG_CHECKING([whether $CC supports -Wno-unused-but-set-variable])
+	AC_MSG_CHECKING([whether $CC supports -Wno-unused-const-variable])
 
 	saved_flags="$CFLAGS"
-	CFLAGS="$CFLAGS -Wunused-but-set-variable"
+	CFLAGS="$CFLAGS -Wunused-const-variable"
 
 	AC_COMPILE_IFELSE([AC_LANG_PROGRAM([], [])], [
-		NO_UNUSED_BUT_SET_VARIABLE=-Wno-unused-but-set-variable
+		NO_UNUSED_BUT_SET_VARIABLE=-Wno-unused-const-variable
 		AC_MSG_RESULT([yes])
 	], [
 		NO_UNUSED_BUT_SET_VARIABLE=
